@@ -121,6 +121,9 @@ form.rsvp input:focus-visible,form.rsvp select:focus-visible,form.rsvp textarea:
 form.rsvp button{justify-self:center;border:0;cursor:pointer}
 .form-note{font-family:var(--sans);font-size:13.5px;line-height:1.5;background:#f6e7bf;border-radius:8px;padding:12px 14px;color:#5c430c;margin:0}
 .form-note[hidden]{display:none}
+.rsvp-frame{margin-top:18px;background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(176,138,74,.5)}
+.rsvp-frame[hidden]{display:none}
+.rsvp-frame iframe{display:block;width:100%;height:1050px;border:0}
 /* gift */
 .gifts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .gift{background:#fff8f5;border-radius:12px;padding:16px 12px}
@@ -308,25 +311,9 @@ form.rsvp button{justify-self:center;border:0;cursor:pointer}
   <section>
     <p class="eyebrow">Xác nhận tham dự</p>
     <h2 class="script">Bạn sẽ đến chứ?</h2>
-    <div class="demo-tag">Bản xem thử · chưa gửi được</div>
-    <form class="rsvp" id="rsvp" novalidate>
-      <div><label for="rsvp-name">Họ và tên</label><input type="text" id="rsvp-name" name="name" autocomplete="name" placeholder="Ví dụ: Nguyễn Văn An"></div>
-      <fieldset><legend>Bạn là khách của</legend>
-        <div class="choice">
-          <label for="rsvp-side-trai"><input type="radio" id="rsvp-side-trai" name="side" value="trai" checked> Nhà trai</label>
-          <label for="rsvp-side-gai"><input type="radio" id="rsvp-side-gai" name="side" value="gai"> Nhà gái</label>
-        </div></fieldset>
-      <fieldset><legend>Bạn có tham dự không?</legend>
-        <div class="choice">
-          <label for="rsvp-yes"><input type="radio" id="rsvp-yes" name="attend" value="yes" checked> Có, tôi sẽ đến</label>
-          <label for="rsvp-no"><input type="radio" id="rsvp-no" name="attend" value="no"> Rất tiếc, tôi bận</label>
-        </div></fieldset>
-      <div><label for="rsvp-count">Số người tham dự</label>
-        <select id="rsvp-count" name="count"><option>1</option><option>2</option><option>3</option><option>4</option><option>5 trở lên</option></select></div>
-      <div><label for="rsvp-wish">Lời chúc gửi cô dâu chú rể</label><textarea id="rsvp-wish" name="wish" placeholder="Chúc hai bạn trăm năm hạnh phúc..."></textarea></div>
-      <button type="submit" class="btn">Gửi xác nhận</button>
-      <p class="form-note" id="rsvp-note" role="status" hidden></p>
-    </form>
+    <p>Xin vui lòng dành một phút xác nhận để gia đình đón tiếp chu đáo.</p>
+    <p style="margin-top:18px"><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd-WaiRI6UvAaOwn_1qAK1LaRa5026qygnoU4eGefC6rgitHQ/viewform">Mở biểu mẫu xác nhận</a></p>
+    <div class="rsvp-frame" id="rsvp-frame" hidden></div>
   </section>
 
   <section>
@@ -424,15 +411,13 @@ tick(); setInterval(tick, 1000);
   window.startAutoScroll = function(){ if (!reduce){ setOn(true); holdUntil = performance.now() + 1500; } };
 })();
 
-// RSVP preview: this page has nowhere to send the form yet, so say so plainly.
-document.getElementById('rsvp').addEventListener('submit', function(e){
-  e.preventDefault();
-  var note = document.getElementById('rsvp-note'), name = document.getElementById('rsvp-name').value.trim();
-  note.hidden = false;
-  note.textContent = name
-    ? 'Đây là bản xem thử: thông tin của ' + name + ' chưa được gửi đi. Phần này sẽ hoạt động khi được nối với biểu mẫu thật.'
-    : 'Vui lòng nhập họ và tên. (Đây là bản xem thử, thông tin chưa được gửi đi.)';
-});
+// RSVP: the form lives on Google Forms. Where the host allows frames (GitHub Pages), show it inline too.
+(function(){
+  if (!/github\.io$/.test(location.hostname)) return;
+  var box = document.getElementById('rsvp-frame'), f = document.createElement('iframe');
+  f.src = 'https://docs.google.com/forms/d/e/1FAIpQLSd-WaiRI6UvAaOwn_1qAK1LaRa5026qygnoU4eGefC6rgitHQ/viewform?embedded=true'; f.title = 'Biểu mẫu xác nhận tham dự'; f.loading = 'lazy';
+  box.appendChild(f); box.hidden = false;
+})();
 
 // Lightbox
 (function(){
