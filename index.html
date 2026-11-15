@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thiệp cưới Minh Sáng &amp; Thị Nhung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout: one phone-width column of framed "pages", like a folded card read top to bottom. */
+  --paper:#fbf1ee;       /* blush paper, taken from the printed card */
+  --paper-deep:#f3ddd8;  /* rose wash behind the column */
+  --wine:#961a28;        /* do do - names and headings */
+  --ink:#4a2a2c;         /* body text, wine-biased brown */
+  --gold:#b08a4a;        /* rules, small caps */
+  --leaf:#6f7f5f;        /* quiet green from the card's foliage */
+  --display:"Great Vibes","Brush Script MT",cursive;
+  --serif:"Cormorant Garamond","Times New Roman",serif;
+  --sans:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper-deep);color:var(--ink);font-family:var(--serif);font-size:20px;line-height:1.5;
+  background-image:radial-gradient(circle at 15% 10%,#f8e6e2 0,transparent 40%),radial-gradient(circle at 85% 80%,#f6e2d6 0,transparent 45%)}
+img{max-width:100%;display:block}
+a{color:var(--wine)}
+.card{max-width:480px;margin:0 auto;background:var(--paper);box-shadow:0 0 60px rgba(120,60,60,.18);overflow:hidden}
+section{padding:56px 24px;text-align:center;position:relative}
+section + section::before{content:"";position:absolute;top:0;left:50%;width:120px;height:1px;background:var(--gold);transform:translateX(-50%);opacity:.6}
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+.script{font-family:var(--display);color:var(--wine);line-height:1.15}
+h2.script{font-size:46px;margin-bottom:18px}
+p{margin:0 0 12px;text-wrap:pretty}
+.small{font-family:var(--sans);font-size:14px;line-height:1.6}
+.heart{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto;color:var(--gold)}
+.heart::before,.heart::after{content:"";height:1px;width:70px;background:currentColor;opacity:.7}
+.heart svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6}
+
+/* cover */
+.cover{padding:44px 24px 52px}
+.cover .arch{width:78%;margin:22px auto 26px;aspect-ratio:3/4;border-radius:999px 999px 14px 14px;overflow:hidden;
+  box-shadow:0 0 0 6px var(--paper),0 0 0 7px var(--gold),0 18px 40px rgba(110,50,50,.25)}
+.cover .arch img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.names{font-size:58px}
+.names .amp{display:block;font-size:34px;color:var(--gold);margin:2px 0}
+.date-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:22px;font-weight:600;color:var(--wine)}
+.date-row .d{font-size:54px;line-height:1;font-weight:700;padding:0 18px;border-left:1px solid var(--gold);border-right:1px solid var(--gold);font-variant-numeric:lining-nums}
+.date-row span{font-family:var(--sans);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+
+/* families */
+.families{display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:center;margin-top:8px}
+.families > div{padding:0 4px}
+.families .side{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--leaf);margin-bottom:8px}
+.families .parents{font-weight:600;font-size:19px;line-height:1.35}
+.families .addr{font-family:var(--sans);font-size:13px;line-height:1.5;margin-top:8px;opacity:.85}
+.families > div:first-child{border-right:1px solid rgba(176,138,74,.45)}
+.couple{margin-top:34px}
+.couple .role{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.couple .full{font-size:clamp(36px,11.5vw,50px);white-space:nowrap}
+.couple .and{font-family:var(--display);font-size:30px;color:var(--gold);margin:6px 0}
+
+/* countdown */
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 10px}
+.count div{background:#fff8f5;border:1px solid rgba(176,138,74,.5);border-radius:10px;padding:14px 4px 10px}
+.count b{display:block;font-size:38px;line-height:1;color:var(--wine);font-weight:700;font-variant-numeric:tabular-nums lining-nums}
+.count span{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+
+/* month */
+.month{margin:26px auto 0;max-width:340px}
+.month h3{font-family:var(--sans);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--leaf);font-weight:600;margin-bottom:10px}
+.grid7{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-family:var(--sans);font-size:14px;font-variant-numeric:tabular-nums}
+.grid7 .w{font-size:11px;color:var(--gold);font-weight:600;padding-bottom:4px}
+.grid7 span{aspect-ratio:1;display:grid;place-items:center;border-radius:50%}
+.grid7 .on{background:var(--wine);color:#fff;font-weight:600}
+.grid7 .pre{border:1.5px solid var(--wine);color:var(--wine);font-weight:600}
+
+/* events */
+.events{display:grid;gap:14px;margin-top:10px;text-align:left}
+.event{display:grid;grid-template-columns:86px 1fr;gap:14px;align-items:center;background:#fff8f5;border-radius:12px;padding:16px;border-left:4px solid var(--gold)}
+.event.main{border-left-color:var(--wine);background:#fff}
+.event .time{text-align:center;border-right:1px solid rgba(176,138,74,.45);padding-right:12px}
+.event .time b{display:block;font-size:34px;line-height:1;color:var(--wine);font-variant-numeric:lining-nums}
+.event .time span{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.event h3{font-size:23px;font-weight:700;color:var(--wine);line-height:1.2}
+.event p{margin:4px 0 0;font-family:var(--sans);font-size:13.5px;line-height:1.5}
+
+/* album */
+.album{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.album button{padding:0;border:0;background:none;cursor:zoom-in;border-radius:8px;overflow:hidden;aspect-ratio:16/10}
+.album button:first-child,.album button:nth-child(6){grid-column:1/-1;aspect-ratio:16/9}
+.album img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.album button:hover img{transform:scale(1.04)}
+.album button:focus-visible,.btn:focus-visible,.lb button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* map */
+.places{display:grid;gap:14px;text-align:left}
+.place{background:#fff8f5;border-radius:12px;padding:18px}
+.place h3{font-size:22px;font-weight:700;color:var(--wine)}
+.place p{font-family:var(--sans);font-size:14px;line-height:1.55;margin:6px 0 12px}
+.btn{display:inline-block;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.06em;text-decoration:none;color:#fff;background:var(--wine);padding:10px 18px;border-radius:999px}
+.btn.ghost{background:none;color:var(--wine);border:1px solid var(--wine)}
+
+.thanks .script{font-size:54px}
+footer{padding:0 24px 40px;text-align:center;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+
+/* rsvp form */
+.demo-tag{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7a5a12;background:#f6e7bf;border:1px dashed #b08a4a;border-radius:999px;padding:5px 12px;margin-bottom:16px}
+form.rsvp{display:grid;gap:14px;text-align:left;background:#fff8f5;border-radius:12px;padding:20px}
+form.rsvp label,form.rsvp legend{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;padding:0}
+form.rsvp input[type=text],form.rsvp select,form.rsvp textarea{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:#fff;border:1px solid rgba(176,138,74,.6);border-radius:8px;padding:11px 12px}
+form.rsvp textarea{min-height:92px;resize:vertical}
+form.rsvp fieldset{border:0;margin:0;padding:0}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choice label{display:flex;align-items:center;gap:8px;font-weight:500;margin:0;background:#fff;border:1px solid rgba(176,138,74,.6);border-radius:8px;padding:10px 12px;cursor:pointer}
+.choice input{accent-color:var(--wine);width:17px;height:17px}
+form.rsvp input:focus-visible,form.rsvp select:focus-visible,form.rsvp textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+form.rsvp button{justify-self:center;border:0;cursor:pointer}
+.form-note{font-family:var(--sans);font-size:13.5px;line-height:1.5;background:#f6e7bf;border-radius:8px;padding:12px 14px;color:#5c430c;margin:0}
+.form-note[hidden]{display:none}
+/* gift */
+.gifts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gift{background:#fff8f5;border-radius:12px;padding:16px 12px}
+.gift h3{font-size:21px;font-weight:700;color:var(--wine);margin-bottom:10px}
+.gift .qr{width:100%;max-width:150px;margin:0 auto 10px;padding:6px;background:#fff;border:1px solid rgba(176,138,74,.6);border-radius:8px}
+.gift .qr svg{display:block;width:100%;height:auto}
+.gift p{font-family:var(--sans);font-size:12.5px;line-height:1.55;margin:0}
+.gift b{font-weight:600}
+
+/* opening envelope */
+.env{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:var(--paper-deep);background-image:radial-gradient(circle at 20% 15%,#f9e9e5 0,transparent 45%),radial-gradient(circle at 80% 85%,#f4ddd0 0,transparent 50%);
+  transition:opacity .9s ease,visibility .9s}
+.env.gone{opacity:0;visibility:hidden}
+.env-card{width:100%;max-width:400px;background:var(--paper);text-align:center;padding:44px 26px 40px;border-radius:6px;position:relative;
+  box-shadow:0 0 0 1px rgba(176,138,74,.55),0 0 0 9px var(--paper),0 0 0 10px rgba(176,138,74,.55),0 24px 60px rgba(110,50,50,.28)}
+.env-card .script{font-size:54px}
+.env-card .amp{display:block;font-size:30px;color:var(--gold)}
+.env-card p{margin:14px 0 0}
+.seal{margin-top:28px;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--wine);
+  border:0;border-radius:999px;padding:15px 34px;cursor:pointer;box-shadow:0 8px 20px rgba(150,26,40,.35)}
+.seal:focus-visible,.music:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.env-note{font-family:var(--sans);font-size:12px;opacity:.7}
+/* music button */
+.music{position:fixed;right:14px;bottom:14px;z-index:9;width:50px;height:50px;border-radius:50%;border:1px solid var(--gold);background:var(--paper);color:var(--wine);
+  cursor:pointer;box-shadow:0 6px 18px rgba(110,50,50,.25);display:grid;place-items:center}
+.music svg{width:22px;height:22px;fill:currentColor}
+.music.on svg{animation:spin 6s linear infinite}
+.music .off{display:none}
+.music:not(.on) .off{display:block;position:absolute;width:28px;height:2px;background:var(--wine);transform:rotate(-45deg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(40,16,18,.92);display:none;align-items:center;justify-content:center;z-index:10;padding:16px}
+.lb.open{display:flex}
+.lb img{max-height:86vh;max-width:100%;border-radius:6px}
+.lb button{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;font-size:26px;width:46px;height:46px;border-radius:50%;cursor:pointer}
+.lb .x{top:16px;right:16px}.lb .p{left:10px;top:50%;transform:translateY(-50%)}.lb .n{right:10px;top:50%;transform:translateY(-50%)}
+@media (max-width:380px){.names{font-size:48px}h2.script{font-size:40px}.event{grid-template-columns:74px 1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.album img{transition:none}.env{transition:none}.music.on svg{animation:none}}
+</style>
+</head>
+<body>
+<div class="env" id="env">
+  <div class="env-card">
+    <p class="eyebrow">Thiệp mời · Lễ Thành Hôn</p>
+    <div class="script">Minh Sáng <span class="amp">&amp;</span> Thị Nhung</div>
+    <p>Trân trọng kính mời Quý vị<br>tới chung vui cùng gia đình chúng tôi</p>
+    <p style="font-weight:700;color:var(--wine);letter-spacing:.08em">26 · 11 · 2026</p>
+    <button type="button" class="seal" id="open">Mở thiệp</button>
+    <p class="env-note">Thiệp có nhạc nền, bấm nút hình nốt nhạc để tắt</p>
+  </div>
+</div>
+<audio id="bgm" src="music.mp3" loop preload="none"></audio>
+<button type="button" class="music" id="music" aria-label="Bật hoặc tắt nhạc nền" aria-pressed="false">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v10.2A3.2 3.2 0 1 0 11 17V8h6V4H9z"/></svg><span class="off"></span>
+</button>
+<main class="card">
+
+  <section class="cover">
+    <p class="eyebrow">Thiệp mời · Lễ Thành Hôn</p>
+    <div class="arch"><img src="img/hero.jpg" alt="Cô dâu Thị Nhung và chú rể Minh Sáng dưới cổng hoa trắng"></div>
+    <h1 class="script names">Minh Sáng <span class="amp">&amp;</span> Thị Nhung</h1>
+    <div class="date-row"><span>Thứ Năm</span><div class="d">26</div><span>Tháng 11 · 2026</span></div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Trân trọng kính mời</p>
+    <h2 class="script">Quý vị tới dự lễ thành hôn</h2>
+    <p>của hai con chúng tôi</p>
+    <div class="couple">
+      <div class="role">Chú rể</div>
+      <div class="script full">Vũ Minh Sáng</div>
+      <div class="and">&amp;</div>
+      <div class="role">Cô dâu</div>
+      <div class="script full">Nguyễn Thị Nhung</div>
+    </div>
+    <div class="heart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg></div>
+    <p><em>Sự hiện diện của Quý vị là niềm vinh hạnh lớn lao của gia đình chúng tôi!</em></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Hai gia đình</p>
+    <div class="families">
+      <div>
+        <div class="side">Nhà trai</div>
+        <div class="parents">Ông Vũ Tiến Hả<br>Bà Lưu Thị Chúc</div>
+        <div class="addr">348 thị trấn Yên Mỹ,<br>xã Yên Mỹ, tỉnh Hưng Yên</div>
+      </div>
+      <div>
+        <div class="side">Nhà gái</div>
+        <div class="parents">Bà Nguyễn Thị Tuyết</div>
+        <div class="addr">Thôn Chàng Sơn 1,<br>xã Tây Phương, Hà Nội</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Đếm ngược tới lễ thành hôn</p>
+    <h2 class="script" id="cd-title">Ngày chung đôi</h2>
+    <div class="count" aria-live="off">
+      <div><b id="cd-d">–</b><span>Ngày</span></div>
+      <div><b id="cd-h">–</b><span>Giờ</span></div>
+      <div><b id="cd-m">–</b><span>Phút</span></div>
+      <div><b id="cd-s">–</b><span>Giây</span></div>
+    </div>
+    <div class="month">
+      <h3>Tháng 11 · 2026</h3>
+      <div class="grid7" id="month"></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Lịch cưới</p>
+    <h2 class="script">Chương trình</h2>
+    <div class="events">
+      <div class="event">
+        <div class="time"><b>16:00</b><span>Thứ Tư 25/11</span></div>
+        <div><h3>Tiệc cưới nhà trai</h3><p>Tại tư gia nhà trai<br>348 thị trấn Yên Mỹ, xã Yên Mỹ, Hưng Yên</p></div>
+      </div>
+      <div class="event">
+        <div class="time"><b>09:00</b><span>Thứ Năm 26/11</span></div>
+        <div><h3>Tiệc cưới nhà gái</h3><p>Tại tư gia nhà gái<br>Thôn Chàng Sơn 1, xã Tây Phương, Hà Nội</p></div>
+      </div>
+      <div class="event">
+        <div class="time"><b>11:00</b><span>Thứ Năm 26/11</span></div>
+        <div><h3>Lễ Vu Quy</h3><p>Tại tư gia nhà gái</p></div>
+      </div>
+      <div class="event main">
+        <div class="time"><b>15:00</b><span>Thứ Năm 26/11</span></div>
+        <div><h3>Lễ Thành Hôn</h3><p>Tại tư gia nhà trai</p></div>
+      </div>
+    </div>
+    <p style="margin-top:22px"><a class="btn ghost" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=L%E1%BB%85%20Th%C3%A0nh%20H%C3%B4n%20Minh%20S%C3%A1ng%20%26%20Th%E1%BB%8B%20Nhung&dates=20261126T080000Z/20261126T100000Z&location=348%20th%E1%BB%8B%20tr%E1%BA%A5n%20Y%C3%AAn%20M%E1%BB%B9%2C%20H%C6%B0ng%20Y%C3%AAn">Thêm vào Google Lịch</a></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Album ảnh cưới</p>
+    <h2 class="script">Khoảnh khắc của chúng mình</h2>
+    <div class="album" id="album">
+      <button type="button"><img src="img/a05.jpg" alt="Cô dâu chú rể trong căn phòng cổ điển kiểu Pháp" loading="lazy"></button>
+      <button type="button"><img src="img/a16.jpg" alt="Cô dâu chú rể dưới vầng trăng" loading="lazy"></button>
+      <button type="button"><img src="img/b03.jpg" alt="Chân dung cô dâu" loading="lazy"></button>
+      <button type="button"><img src="img/a02.jpg" alt="Cô dâu chú rể trong trang phục cưới truyền thống màu đỏ" loading="lazy"></button>
+      <button type="button"><img src="img/a01.jpg" alt="Ảnh cưới phong cách tranh sơn dầu cổ điển" loading="lazy"></button>
+      <button type="button"><img src="img/a06.jpg" alt="Dạo bước bên sông Thames, London" loading="lazy"></button>
+      <button type="button"><img src="img/a23.jpg" alt="Con phố đá và tường hoa hồng" loading="lazy"></button>
+      <button type="button"><img src="img/a04.jpg" alt="Đồi chè lúc hoàng hôn" loading="lazy"></button>
+      <button type="button"><img src="img/a26.jpg" alt="Ảnh cưới dưới nước" loading="lazy"></button>
+      <button type="button"><img src="img/a18.jpg" alt="Khu rừng cổ tích" loading="lazy"></button>
+      <button type="button"><img src="img/a08.jpg" alt="Bãi biển lúc hoàng hôn" loading="lazy"></button>
+      <button type="button"><img src="img/a07.jpg" alt="Dạo biển dưới trời tím hồng" loading="lazy"></button>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Chỉ đường</p>
+    <h2 class="script">Địa điểm</h2>
+    <div class="places">
+      <div class="place">
+        <h3>Tư gia nhà trai</h3>
+        <p>348 thị trấn Yên Mỹ, xã Yên Mỹ, tỉnh Hưng Yên<br>Tiệc cưới 16:00 ngày 25/11 · Lễ Thành Hôn 15:00 ngày 26/11</p>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=348%20th%E1%BB%8B%20tr%E1%BA%A5n%20Y%C3%AAn%20M%E1%BB%B9%2C%20H%C6%B0ng%20Y%C3%AAn">Mở Google Maps</a>
+      </div>
+      <div class="place">
+        <h3>Tư gia nhà gái</h3>
+        <p>Thôn Chàng Sơn 1, xã Tây Phương, Hà Nội<br>Tiệc cưới 09:00 · Lễ Vu Quy 11:00 ngày 26/11</p>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Th%C3%B4n%20Ch%C3%A0ng%20S%C6%A1n%201%2C%20x%C3%A3%20T%C3%A2y%20Ph%C6%B0%C6%A1ng%2C%20H%C3%A0%20N%E1%BB%99i">Mở Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Xác nhận tham dự</p>
+    <h2 class="script">Bạn sẽ đến chứ?</h2>
+    <div class="demo-tag">Bản xem thử · chưa gửi được</div>
+    <form class="rsvp" id="rsvp" novalidate>
+      <div><label for="rsvp-name">Họ và tên</label><input type="text" id="rsvp-name" name="name" autocomplete="name" placeholder="Ví dụ: Nguyễn Văn An"></div>
+      <fieldset><legend>Bạn là khách của</legend>
+        <div class="choice">
+          <label for="rsvp-side-trai"><input type="radio" id="rsvp-side-trai" name="side" value="trai" checked> Nhà trai</label>
+          <label for="rsvp-side-gai"><input type="radio" id="rsvp-side-gai" name="side" value="gai"> Nhà gái</label>
+        </div></fieldset>
+      <fieldset><legend>Bạn có tham dự không?</legend>
+        <div class="choice">
+          <label for="rsvp-yes"><input type="radio" id="rsvp-yes" name="attend" value="yes" checked> Có, tôi sẽ đến</label>
+          <label for="rsvp-no"><input type="radio" id="rsvp-no" name="attend" value="no"> Rất tiếc, tôi bận</label>
+        </div></fieldset>
+      <div><label for="rsvp-count">Số người tham dự</label>
+        <select id="rsvp-count" name="count"><option>1</option><option>2</option><option>3</option><option>4</option><option>5 trở lên</option></select></div>
+      <div><label for="rsvp-wish">Lời chúc gửi cô dâu chú rể</label><textarea id="rsvp-wish" name="wish" placeholder="Chúc hai bạn trăm năm hạnh phúc..."></textarea></div>
+      <button type="submit" class="btn">Gửi xác nhận</button>
+      <p class="form-note" id="rsvp-note" role="status" hidden></p>
+    </form>
+  </section>
+
+  <section>
+    <p class="eyebrow">Mừng cưới</p>
+    <h2 class="script">Hộp mừng cưới</h2>
+    <div class="demo-tag">Mã QR mẫu · chưa phải tài khoản thật</div>
+    <div class="gifts">
+      <div class="gift"><h3>Nhà trai</h3><div class="qr"><svg viewBox="0 0 45 45" role="img" aria-label="Mã QR mẫu xem thử" shape-rendering="crispEdges"><rect width="45" height="45" fill="#fff"/><path d="M2,2h1v1h-1zM3,2h1v1h-1zM4,2h1v1h-1zM5,2h1v1h-1zM6,2h1v1h-1zM7,2h1v1h-1zM8,2h1v1h-1zM10,2h1v1h-1zM11,2h1v1h-1zM14,2h1v1h-1zM16,2h1v1h-1zM18,2h1v1h-1zM19,2h1v1h-1zM20,2h1v1h-1zM27,2h1v1h-1zM28,2h1v1h-1zM36,2h1v1h-1zM37,2h1v1h-1zM38,2h1v1h-1zM39,2h1v1h-1zM40,2h1v1h-1zM41,2h1v1h-1zM42,2h1v1h-1zM2,3h1v1h-1zM8,3h1v1h-1zM10,3h1v1h-1zM11,3h1v1h-1zM12,3h1v1h-1zM13,3h1v1h-1zM14,3h1v1h-1zM15,3h1v1h-1zM16,3h1v1h-1zM17,3h1v1h-1zM18,3h1v1h-1zM20,3h1v1h-1zM21,3h1v1h-1zM22,3h1v1h-1zM23,3h1v1h-1zM24,3h1v1h-1zM26,3h1v1h-1zM27,3h1v1h-1zM28,3h1v1h-1zM31,3h1v1h-1zM33,3h1v1h-1zM34,3h1v1h-1zM36,3h1v1h-1zM42,3h1v1h-1zM2,4h1v1h-1zM4,4h1v1h-1zM5,4h1v1h-1zM6,4h1v1h-1zM8,4h1v1h-1zM10,4h1v1h-1zM21,4h1v1h-1zM24,4h1v1h-1zM26,4h1v1h-1zM27,4h1v1h-1zM28,4h1v1h-1zM29,4h1v1h-1zM30,4h1v1h-1zM31,4h1v1h-1zM32,4h1v1h-1zM33,4h1v1h-1zM36,4h1v1h-1zM38,4h1v1h-1zM39,4h1v1h-1zM40,4h1v1h-1zM42,4h1v1h-1zM2,5h1v1h-1zM4,5h1v1h-1zM5,5h1v1h-1zM6,5h1v1h-1zM8,5h1v1h-1zM12,5h1v1h-1zM13,5h1v1h-1zM14,5h1v1h-1zM15,5h1v1h-1zM16,5h1v1h-1zM18,5h1v1h-1zM20,5h1v1h-1zM22,5h1v1h-1zM25,5h1v1h-1zM26,5h1v1h-1zM28,5h1v1h-1zM30,5h1v1h-1zM36,5h1v1h-1zM38,5h1v1h-1zM39,5h1v1h-1zM40,5h1v1h-1zM42,5h1v1h-1zM2,6h1v1h-1zM4,6h1v1h-1zM5,6h1v1h-1zM6,6h1v1h-1zM8,6h1v1h-1zM10,6h1v1h-1zM13,6h1v1h-1zM14,6h1v1h-1zM19,6h1v1h-1zM21,6h1v1h-1zM23,6h1v1h-1zM26,6h1v1h-1zM31,6h1v1h-1zM32,6h1v1h-1zM36,6h1v1h-1zM38,6h1v1h-1zM39,6h1v1h-1zM40,6h1v1h-1zM42,6h1v1h-1zM2,7h1v1h-1zM8,7h1v1h-1zM12,7h1v1h-1zM15,7h1v1h-1zM16,7h1v1h-1zM17,7h1v1h-1zM18,7h1v1h-1zM23,7h1v1h-1zM24,7h1v1h-1zM25,7h1v1h-1zM30,7h1v1h-1zM31,7h1v1h-1zM36,7h1v1h-1zM42,7h1v1h-1zM2,8h1v1h-1zM3,8h1v1h-1zM4,8h1v1h-1zM5,8h1v1h-1zM6,8h1v1h-1zM7,8h1v1h-1zM8,8h1v1h-1zM10,8h1v1h-1zM12,8h1v1h-1zM14,8h1v1h-1zM16,8h1v1h-1zM18,8h1v1h-1zM20,8h1v1h-1zM22,8h1v1h-1zM24,8h1v1h-1zM26,8h1v1h-1zM28,8h1v1h-1zM30,8h1v1h-1zM32,8h1v1h-1zM34,8h1v1h-1zM36,8h1v1h-1zM37,8h1v1h-1zM38,8h1v1h-1zM39,8h1v1h-1zM40,8h1v1h-1zM41,8h1v1h-1zM42,8h1v1h-1zM11,9h1v1h-1zM12,9h1v1h-1zM13,9h1v1h-1zM16,9h1v1h-1zM26,9h1v1h-1zM27,9h1v1h-1zM28,9h1v1h-1zM32,9h1v1h-1zM33,9h1v1h-1zM34,9h1v1h-1zM2,10h1v1h-1zM5,10h1v1h-1zM6,10h1v1h-1zM7,10h1v1h-1zM8,10h1v1h-1zM9,10h1v1h-1zM10,10h1v1h-1zM12,10h1v1h-1zM13,10h1v1h-1zM14,10h1v1h-1zM17,10h1v1h-1zM19,10h1v1h-1zM20,10h1v1h-1zM24,10h1v1h-1zM25,10h1v1h-1zM27,10h1v1h-1zM28,10h1v1h-1zM29,10h1v1h-1zM30,10h1v1h-1zM33,10h1v1h-1zM34,10h1v1h-1zM35,10h1v1h-1zM38,10h1v1h-1zM40,10h1v1h-1zM41,10h1v1h-1zM42,10h1v1h-1zM3,11h1v1h-1zM6,11h1v1h-1zM7,11h1v1h-1zM9,11h1v1h-1zM12,11h1v1h-1zM13,11h1v1h-1zM16,11h1v1h-1zM17,11h1v1h-1zM18,11h1v1h-1zM20,11h1v1h-1zM21,11h1v1h-1zM24,11h1v1h-1zM28,11h1v1h-1zM29,11h1v1h-1zM30,11h1v1h-1zM32,11h1v1h-1zM37,11h1v1h-1zM38,11h1v1h-1zM39,11h1v1h-1zM2,12h1v1h-1zM3,12h1v1h-1zM5,12h1v1h-1zM8,12h1v1h-1zM12,12h1v1h-1zM13,12h1v1h-1zM14,12h1v1h-1zM15,12h1v1h-1zM18,12h1v1h-1zM22,12h1v1h-1zM23,12h1v1h-1zM25,12h1v1h-1zM27,12h1v1h-1zM29,12h1v1h-1zM30,12h1v1h-1zM32,12h1v1h-1zM34,12h1v1h-1zM35,12h1v1h-1zM36,12h1v1h-1zM39,12h1v1h-1zM40,12h1v1h-1zM2,13h1v1h-1zM3,13h1v1h-1zM4,13h1v1h-1zM6,13h1v1h-1zM9,13h1v1h-1zM11,13h1v1h-1zM14,13h1v1h-1zM15,13h1v1h-1zM16,13h1v1h-1zM17,13h1v1h-1zM18,13h1v1h-1zM19,13h1v1h-1zM21,13h1v1h-1zM22,13h1v1h-1zM24,13h1v1h-1zM25,13h1v1h-1zM26,13h1v1h-1zM31,13h1v1h-1zM36,13h1v1h-1zM37,13h1v1h-1zM38,13h1v1h-1zM39,13h1v1h-1zM41,13h1v1h-1zM42,13h1v1h-1zM2,14h1v1h-1zM3,14h1v1h-1zM4,14h1v1h-1zM5,14h1v1h-1zM6,14h1v1h-1zM8,14h1v1h-1zM9,14h1v1h-1zM11,14h1v1h-1zM15,14h1v1h-1zM16,14h1v1h-1zM18,14h1v1h-1zM20,14h1v1h-1zM22,14h1v1h-1zM23,14h1v1h-1zM25,14h1v1h-1zM28,14h1v1h-1zM30,14h1v1h-1zM33,14h1v1h-1zM34,14h1v1h-1zM36,14h1v1h-1zM37,14h1v1h-1zM39,14h1v1h-1zM40,14h1v1h-1zM41,14h1v1h-1zM42,14h1v1h-1zM3,15h1v1h-1zM4,15h1v1h-1zM10,15h1v1h-1zM11,15h1v1h-1zM15,15h1v1h-1zM19,15h1v1h-1zM20,15h1v1h-1zM21,15h1v1h-1zM26,15h1v1h-1zM28,15h1v1h-1zM30,15h1v1h-1zM32,15h1v1h-1zM33,15h1v1h-1zM34,15h1v1h-1zM36,15h1v1h-1zM37,15h1v1h-1zM38,15h1v1h-1zM42,15h1v1h-1zM2,16h1v1h-1zM4,16h1v1h-1zM7,16h1v1h-1zM8,16h1v1h-1zM10,16h1v1h-1zM13,16h1v1h-1zM15,16h1v1h-1zM17,16h1v1h-1zM18,16h1v1h-1zM19,16h1v1h-1zM20,16h1v1h-1zM23,16h1v1h-1zM27,16h1v1h-1zM28,16h1v1h-1zM30,16h1v1h-1zM32,16h1v1h-1zM33,16h1v1h-1zM35,16h1v1h-1zM37,16h1v1h-1zM38,16h1v1h-1zM40,16h1v1h-1zM42,16h1v1h-1zM5,17h1v1h-1zM6,17h1v1h-1zM10,17h1v1h-1zM12,17h1v1h-1zM15,17h1v1h-1zM16,17h1v1h-1zM17,17h1v1h-1zM21,17h1v1h-1zM26,17h1v1h-1zM29,17h1v1h-1zM32,17h1v1h-1zM33,17h1v1h-1zM36,17h1v1h-1zM37,17h1v1h-1zM39,17h1v1h-1zM40,17h1v1h-1zM42,17h1v1h-1zM2,18h1v1h-1zM3,18h1v1h-1zM4,18h1v1h-1zM6,18h1v1h-1zM8,18h1v1h-1zM12,18h1v1h-1zM17,18h1v1h-1zM18,18h1v1h-1zM21,18h1v1h-1zM22,18h1v1h-1zM24,18h1v1h-1zM25,18h1v1h-1zM26,18h1v1h-1zM27,18h1v1h-1zM33,18h1v1h-1zM34,18h1v1h-1zM38,18h1v1h-1zM2,19h1v1h-1zM3,19h1v1h-1zM7,19h1v1h-1zM10,19h1v1h-1zM11,19h1v1h-1zM12,19h1v1h-1zM20,19h1v1h-1zM21,19h1v1h-1zM27,19h1v1h-1zM29,19h1v1h-1zM30,19h1v1h-1zM31,19h1v1h-1zM32,19h1v1h-1zM33,19h1v1h-1zM36,19h1v1h-1zM38,19h1v1h-1zM6,20h1v1h-1zM7,20h1v1h-1zM8,20h1v1h-1zM11,20h1v1h-1zM12,20h1v1h-1zM14,20h1v1h-1zM21,20h1v1h-1zM22,20h1v1h-1zM23,20h1v1h-1zM24,20h1v1h-1zM25,20h1v1h-1zM29,20h1v1h-1zM31,20h1v1h-1zM32,20h1v1h-1zM33,20h1v1h-1zM35,20h1v1h-1zM37,20h1v1h-1zM38,20h1v1h-1zM40,20h1v1h-1zM42,20h1v1h-1zM2,21h1v1h-1zM3,21h1v1h-1zM6,21h1v1h-1zM10,21h1v1h-1zM11,21h1v1h-1zM13,21h1v1h-1zM14,21h1v1h-1zM16,21h1v1h-1zM18,21h1v1h-1zM19,21h1v1h-1zM20,21h1v1h-1zM24,21h1v1h-1zM25,21h1v1h-1zM26,21h1v1h-1zM28,21h1v1h-1zM33,21h1v1h-1zM34,21h1v1h-1zM35,21h1v1h-1zM38,21h1v1h-1zM40,21h1v1h-1zM41,21h1v1h-1zM2,22h1v1h-1zM3,22h1v1h-1zM5,22h1v1h-1zM6,22h1v1h-1zM8,22h1v1h-1zM10,22h1v1h-1zM14,22h1v1h-1zM15,22h1v1h-1zM16,22h1v1h-1zM17,22h1v1h-1zM23,22h1v1h-1zM24,22h1v1h-1zM26,22h1v1h-1zM27,22h1v1h-1zM28,22h1v1h-1zM30,22h1v1h-1zM32,22h1v1h-1zM33,22h1v1h-1zM36,22h1v1h-1zM40,22h1v1h-1zM42,22h1v1h-1zM3,23h1v1h-1zM4,23h1v1h-1zM5,23h1v1h-1zM9,23h1v1h-1zM11,23h1v1h-1zM17,23h1v1h-1zM18,23h1v1h-1zM20,23h1v1h-1zM21,23h1v1h-1zM25,23h1v1h-1zM27,23h1v1h-1zM28,23h1v1h-1zM29,23h1v1h-1zM30,23h1v1h-1zM31,23h1v1h-1zM33,23h1v1h-1zM34,23h1v1h-1zM37,23h1v1h-1zM38,23h1v1h-1zM39,23h1v1h-1zM42,23h1v1h-1zM3,24h1v1h-1zM6,24h1v1h-1zM8,24h1v1h-1zM19,24h1v1h-1zM20,24h1v1h-1zM23,24h1v1h-1zM25,24h1v1h-1zM26,24h1v1h-1zM29,24h1v1h-1zM30,24h1v1h-1zM31,24h1v1h-1zM32,24h1v1h-1zM34,24h1v1h-1zM35,24h1v1h-1zM36,24h1v1h-1zM37,24h1v1h-1zM38,24h1v1h-1zM2,25h1v1h-1zM4,25h1v1h-1zM5,25h1v1h-1zM6,25h1v1h-1zM7,25h1v1h-1zM12,25h1v1h-1zM13,25h1v1h-1zM14,25h1v1h-1zM15,25h1v1h-1zM16,25h1v1h-1zM18,25h1v1h-1zM19,25h1v1h-1zM20,25h1v1h-1zM22,25h1v1h-1zM24,25h1v1h-1zM25,25h1v1h-1zM26,25h1v1h-1zM28,25h1v1h-1zM29,25h1v1h-1zM31,25h1v1h-1zM32,25h1v1h-1zM36,25h1v1h-1zM38,25h1v1h-1zM42,25h1v1h-1zM2,26h1v1h-1zM3,26h1v1h-1zM4,26h1v1h-1zM5,26h1v1h-1zM8,26h1v1h-1zM9,26h1v1h-1zM10,26h1v1h-1zM13,26h1v1h-1zM14,26h1v1h-1zM15,26h1v1h-1zM21,26h1v1h-1zM22,26h1v1h-1zM29,26h1v1h-1zM30,26h1v1h-1zM31,26h1v1h-1zM34,26h1v1h-1zM36,26h1v1h-1zM37,26h1v1h-1zM39,26h1v1h-1zM41,26h1v1h-1zM4,27h1v1h-1zM6,27h1v1h-1zM14,27h1v1h-1zM17,27h1v1h-1zM19,27h1v1h-1zM20,27h1v1h-1zM23,27h1v1h-1zM27,27h1v1h-1zM28,27h1v1h-1zM29,27h1v1h-1zM34,27h1v1h-1zM35,27h1v1h-1zM36,27h1v1h-1zM37,27h1v1h-1zM38,27h1v1h-1zM39,27h1v1h-1zM40,27h1v1h-1zM42,27h1v1h-1zM4,28h1v1h-1zM5,28h1v1h-1zM6,28h1v1h-1zM8,28h1v1h-1zM10,28h1v1h-1zM11,28h1v1h-1zM12,28h1v1h-1zM16,28h1v1h-1zM19,28h1v1h-1zM21,28h1v1h-1zM22,28h1v1h-1zM26,28h1v1h-1zM27,28h1v1h-1zM29,28h1v1h-1zM30,28h1v1h-1zM32,28h1v1h-1zM33,28h1v1h-1zM34,28h1v1h-1zM35,28h1v1h-1zM36,28h1v1h-1zM38,28h1v1h-1zM42,28h1v1h-1zM3,29h1v1h-1zM4,29h1v1h-1zM6,29h1v1h-1zM7,29h1v1h-1zM11,29h1v1h-1zM18,29h1v1h-1zM20,29h1v1h-1zM24,29h1v1h-1zM26,29h1v1h-1zM28,29h1v1h-1zM30,29h1v1h-1zM35,29h1v1h-1zM36,29h1v1h-1zM38,29h1v1h-1zM39,29h1v1h-1zM40,29h1v1h-1zM41,29h1v1h-1zM8,30h1v1h-1zM10,30h1v1h-1zM11,30h1v1h-1zM16,30h1v1h-1zM17,30h1v1h-1zM18,30h1v1h-1zM20,30h1v1h-1zM24,30h1v1h-1zM25,30h1v1h-1zM26,30h1v1h-1zM29,30h1v1h-1zM30,30h1v1h-1zM33,30h1v1h-1zM34,30h1v1h-1zM37,30h1v1h-1zM38,30h1v1h-1zM39,30h1v1h-1zM40,30h1v1h-1zM42,30h1v1h-1zM2,31h1v1h-1zM3,31h1v1h-1zM4,31h1v1h-1zM5,31h1v1h-1zM7,31h1v1h-1zM9,31h1v1h-1zM11,31h1v1h-1zM12,31h1v1h-1zM14,31h1v1h-1zM15,31h1v1h-1zM16,31h1v1h-1zM17,31h1v1h-1zM18,31h1v1h-1zM20,31h1v1h-1zM23,31h1v1h-1zM24,31h1v1h-1zM25,31h1v1h-1zM28,31h1v1h-1zM30,31h1v1h-1zM32,31h1v1h-1zM33,31h1v1h-1zM35,31h1v1h-1zM38,31h1v1h-1zM40,31h1v1h-1zM42,31h1v1h-1zM2,32h1v1h-1zM3,32h1v1h-1zM4,32h1v1h-1zM6,32h1v1h-1zM7,32h1v1h-1zM8,32h1v1h-1zM9,32h1v1h-1zM12,32h1v1h-1zM13,32h1v1h-1zM15,32h1v1h-1zM17,32h1v1h-1zM19,32h1v1h-1zM20,32h1v1h-1zM21,32h1v1h-1zM23,32h1v1h-1zM24,32h1v1h-1zM26,32h1v1h-1zM27,32h1v1h-1zM28,32h1v1h-1zM29,32h1v1h-1zM31,32h1v1h-1zM32,32h1v1h-1zM33,32h1v1h-1zM34,32h1v1h-1zM36,32h1v1h-1zM37,32h1v1h-1zM38,32h1v1h-1zM40,32h1v1h-1zM42,32h1v1h-1zM2,33h1v1h-1zM3,33h1v1h-1zM5,33h1v1h-1zM9,33h1v1h-1zM10,33h1v1h-1zM12,33h1v1h-1zM13,33h1v1h-1zM16,33h1v1h-1zM20,33h1v1h-1zM21,33h1v1h-1zM22,33h1v1h-1zM24,33h1v1h-1zM25,33h1v1h-1zM27,33h1v1h-1zM32,33h1v1h-1zM33,33h1v1h-1zM35,33h1v1h-1zM38,33h1v1h-1zM39,33h1v1h-1zM40,33h1v1h-1zM2,34h1v1h-1zM3,34h1v1h-1zM4,34h1v1h-1zM6,34h1v1h-1zM8,34h1v1h-1zM13,34h1v1h-1zM14,34h1v1h-1zM18,34h1v1h-1zM19,34h1v1h-1zM21,34h1v1h-1zM25,34h1v1h-1zM26,34h1v1h-1zM29,34h1v1h-1zM30,34h1v1h-1zM31,34h1v1h-1zM33,34h1v1h-1zM34,34h1v1h-1zM35,34h1v1h-1zM36,34h1v1h-1zM37,34h1v1h-1zM38,34h1v1h-1zM39,34h1v1h-1zM40,34h1v1h-1zM41,34h1v1h-1zM42,34h1v1h-1zM10,35h1v1h-1zM11,35h1v1h-1zM16,35h1v1h-1zM20,35h1v1h-1zM21,35h1v1h-1zM23,35h1v1h-1zM24,35h1v1h-1zM25,35h1v1h-1zM28,35h1v1h-1zM29,35h1v1h-1zM31,35h1v1h-1zM32,35h1v1h-1zM34,35h1v1h-1zM38,35h1v1h-1zM41,35h1v1h-1zM2,36h1v1h-1zM3,36h1v1h-1zM4,36h1v1h-1zM5,36h1v1h-1zM6,36h1v1h-1zM7,36h1v1h-1zM8,36h1v1h-1zM10,36h1v1h-1zM11,36h1v1h-1zM13,36h1v1h-1zM19,36h1v1h-1zM20,36h1v1h-1zM24,36h1v1h-1zM25,36h1v1h-1zM26,36h1v1h-1zM28,36h1v1h-1zM29,36h1v1h-1zM30,36h1v1h-1zM33,36h1v1h-1zM34,36h1v1h-1zM36,36h1v1h-1zM38,36h1v1h-1zM39,36h1v1h-1zM40,36h1v1h-1zM2,37h1v1h-1zM8,37h1v1h-1zM10,37h1v1h-1zM13,37h1v1h-1zM16,37h1v1h-1zM19,37h1v1h-1zM22,37h1v1h-1zM23,37h1v1h-1zM24,37h1v1h-1zM25,37h1v1h-1zM26,37h1v1h-1zM28,37h1v1h-1zM30,37h1v1h-1zM32,37h1v1h-1zM33,37h1v1h-1zM34,37h1v1h-1zM38,37h1v1h-1zM41,37h1v1h-1zM2,38h1v1h-1zM4,38h1v1h-1zM5,38h1v1h-1zM6,38h1v1h-1zM8,38h1v1h-1zM10,38h1v1h-1zM11,38h1v1h-1zM14,38h1v1h-1zM15,38h1v1h-1zM17,38h1v1h-1zM18,38h1v1h-1zM19,38h1v1h-1zM20,38h1v1h-1zM21,38h1v1h-1zM23,38h1v1h-1zM25,38h1v1h-1zM26,38h1v1h-1zM27,38h1v1h-1zM28,38h1v1h-1zM29,38h1v1h-1zM30,38h1v1h-1zM31,38h1v1h-1zM33,38h1v1h-1zM34,38h1v1h-1zM35,38h1v1h-1zM36,38h1v1h-1zM37,38h1v1h-1zM38,38h1v1h-1zM39,38h1v1h-1zM41,38h1v1h-1zM42,38h1v1h-1zM2,39h1v1h-1zM4,39h1v1h-1zM5,39h1v1h-1zM6,39h1v1h-1zM8,39h1v1h-1zM10,39h1v1h-1zM11,39h1v1h-1zM13,39h1v1h-1zM14,39h1v1h-1zM17,39h1v1h-1zM19,39h1v1h-1zM23,39h1v1h-1zM25,39h1v1h-1zM27,39h1v1h-1zM29,39h1v1h-1zM30,39h1v1h-1zM32,39h1v1h-1zM34,39h1v1h-1zM35,39h1v1h-1zM39,39h1v1h-1zM40,39h1v1h-1zM41,39h1v1h-1zM2,40h1v1h-1zM4,40h1v1h-1zM5,40h1v1h-1zM6,40h1v1h-1zM8,40h1v1h-1zM13,40h1v1h-1zM16,40h1v1h-1zM20,40h1v1h-1zM21,40h1v1h-1zM23,40h1v1h-1zM26,40h1v1h-1zM27,40h1v1h-1zM29,40h1v1h-1zM30,40h1v1h-1zM35,40h1v1h-1zM36,40h1v1h-1zM38,40h1v1h-1zM39,40h1v1h-1zM42,40h1v1h-1zM2,41h1v1h-1zM8,41h1v1h-1zM11,41h1v1h-1zM12,41h1v1h-1zM19,41h1v1h-1zM22,41h1v1h-1zM29,41h1v1h-1zM35,41h1v1h-1zM37,41h1v1h-1zM38,41h1v1h-1zM39,41h1v1h-1zM40,41h1v1h-1zM42,41h1v1h-1zM2,42h1v1h-1zM3,42h1v1h-1zM4,42h1v1h-1zM5,42h1v1h-1zM6,42h1v1h-1zM7,42h1v1h-1zM8,42h1v1h-1zM10,42h1v1h-1zM12,42h1v1h-1zM13,42h1v1h-1zM19,42h1v1h-1zM21,42h1v1h-1zM24,42h1v1h-1zM25,42h1v1h-1zM26,42h1v1h-1zM27,42h1v1h-1zM28,42h1v1h-1zM32,42h1v1h-1zM33,42h1v1h-1zM34,42h1v1h-1zM35,42h1v1h-1zM36,42h1v1h-1zM38,42h1v1h-1zM39,42h1v1h-1z" fill="#3a1c1e"/></svg></div>
+        <p><b>Ngân hàng:</b> (chưa có)<br><b>Chủ tài khoản:</b> (chưa có)<br><b>Số tài khoản:</b> (chưa có)</p></div>
+      <div class="gift"><h3>Nhà gái</h3><div class="qr"><svg viewBox="0 0 45 45" role="img" aria-label="Mã QR mẫu xem thử" shape-rendering="crispEdges"><rect width="45" height="45" fill="#fff"/><path d="M2,2h1v1h-1zM3,2h1v1h-1zM4,2h1v1h-1zM5,2h1v1h-1zM6,2h1v1h-1zM7,2h1v1h-1zM8,2h1v1h-1zM10,2h1v1h-1zM11,2h1v1h-1zM14,2h1v1h-1zM16,2h1v1h-1zM18,2h1v1h-1zM19,2h1v1h-1zM20,2h1v1h-1zM27,2h1v1h-1zM28,2h1v1h-1zM36,2h1v1h-1zM37,2h1v1h-1zM38,2h1v1h-1zM39,2h1v1h-1zM40,2h1v1h-1zM41,2h1v1h-1zM42,2h1v1h-1zM2,3h1v1h-1zM8,3h1v1h-1zM10,3h1v1h-1zM11,3h1v1h-1zM12,3h1v1h-1zM13,3h1v1h-1zM14,3h1v1h-1zM15,3h1v1h-1zM16,3h1v1h-1zM17,3h1v1h-1zM18,3h1v1h-1zM20,3h1v1h-1zM21,3h1v1h-1zM22,3h1v1h-1zM23,3h1v1h-1zM24,3h1v1h-1zM26,3h1v1h-1zM27,3h1v1h-1zM28,3h1v1h-1zM31,3h1v1h-1zM33,3h1v1h-1zM34,3h1v1h-1zM36,3h1v1h-1zM42,3h1v1h-1zM2,4h1v1h-1zM4,4h1v1h-1zM5,4h1v1h-1zM6,4h1v1h-1zM8,4h1v1h-1zM10,4h1v1h-1zM21,4h1v1h-1zM24,4h1v1h-1zM26,4h1v1h-1zM27,4h1v1h-1zM28,4h1v1h-1zM29,4h1v1h-1zM30,4h1v1h-1zM31,4h1v1h-1zM32,4h1v1h-1zM33,4h1v1h-1zM36,4h1v1h-1zM38,4h1v1h-1zM39,4h1v1h-1zM40,4h1v1h-1zM42,4h1v1h-1zM2,5h1v1h-1zM4,5h1v1h-1zM5,5h1v1h-1zM6,5h1v1h-1zM8,5h1v1h-1zM12,5h1v1h-1zM13,5h1v1h-1zM14,5h1v1h-1zM15,5h1v1h-1zM16,5h1v1h-1zM18,5h1v1h-1zM20,5h1v1h-1zM22,5h1v1h-1zM25,5h1v1h-1zM26,5h1v1h-1zM28,5h1v1h-1zM30,5h1v1h-1zM36,5h1v1h-1zM38,5h1v1h-1zM39,5h1v1h-1zM40,5h1v1h-1zM42,5h1v1h-1zM2,6h1v1h-1zM4,6h1v1h-1zM5,6h1v1h-1zM6,6h1v1h-1zM8,6h1v1h-1zM10,6h1v1h-1zM13,6h1v1h-1zM14,6h1v1h-1zM19,6h1v1h-1zM21,6h1v1h-1zM23,6h1v1h-1zM26,6h1v1h-1zM31,6h1v1h-1zM32,6h1v1h-1zM36,6h1v1h-1zM38,6h1v1h-1zM39,6h1v1h-1zM40,6h1v1h-1zM42,6h1v1h-1zM2,7h1v1h-1zM8,7h1v1h-1zM12,7h1v1h-1zM15,7h1v1h-1zM16,7h1v1h-1zM17,7h1v1h-1zM18,7h1v1h-1zM23,7h1v1h-1zM24,7h1v1h-1zM25,7h1v1h-1zM30,7h1v1h-1zM31,7h1v1h-1zM36,7h1v1h-1zM42,7h1v1h-1zM2,8h1v1h-1zM3,8h1v1h-1zM4,8h1v1h-1zM5,8h1v1h-1zM6,8h1v1h-1zM7,8h1v1h-1zM8,8h1v1h-1zM10,8h1v1h-1zM12,8h1v1h-1zM14,8h1v1h-1zM16,8h1v1h-1zM18,8h1v1h-1zM20,8h1v1h-1zM22,8h1v1h-1zM24,8h1v1h-1zM26,8h1v1h-1zM28,8h1v1h-1zM30,8h1v1h-1zM32,8h1v1h-1zM34,8h1v1h-1zM36,8h1v1h-1zM37,8h1v1h-1zM38,8h1v1h-1zM39,8h1v1h-1zM40,8h1v1h-1zM41,8h1v1h-1zM42,8h1v1h-1zM11,9h1v1h-1zM12,9h1v1h-1zM13,9h1v1h-1zM16,9h1v1h-1zM26,9h1v1h-1zM27,9h1v1h-1zM28,9h1v1h-1zM32,9h1v1h-1zM33,9h1v1h-1zM34,9h1v1h-1zM2,10h1v1h-1zM5,10h1v1h-1zM6,10h1v1h-1zM7,10h1v1h-1zM8,10h1v1h-1zM9,10h1v1h-1zM10,10h1v1h-1zM12,10h1v1h-1zM13,10h1v1h-1zM14,10h1v1h-1zM17,10h1v1h-1zM19,10h1v1h-1zM20,10h1v1h-1zM24,10h1v1h-1zM25,10h1v1h-1zM27,10h1v1h-1zM28,10h1v1h-1zM29,10h1v1h-1zM30,10h1v1h-1zM33,10h1v1h-1zM34,10h1v1h-1zM35,10h1v1h-1zM38,10h1v1h-1zM40,10h1v1h-1zM41,10h1v1h-1zM42,10h1v1h-1zM3,11h1v1h-1zM6,11h1v1h-1zM7,11h1v1h-1zM9,11h1v1h-1zM12,11h1v1h-1zM13,11h1v1h-1zM16,11h1v1h-1zM17,11h1v1h-1zM18,11h1v1h-1zM20,11h1v1h-1zM21,11h1v1h-1zM24,11h1v1h-1zM28,11h1v1h-1zM29,11h1v1h-1zM30,11h1v1h-1zM32,11h1v1h-1zM37,11h1v1h-1zM38,11h1v1h-1zM39,11h1v1h-1zM2,12h1v1h-1zM3,12h1v1h-1zM5,12h1v1h-1zM8,12h1v1h-1zM12,12h1v1h-1zM13,12h1v1h-1zM14,12h1v1h-1zM15,12h1v1h-1zM18,12h1v1h-1zM22,12h1v1h-1zM23,12h1v1h-1zM25,12h1v1h-1zM27,12h1v1h-1zM29,12h1v1h-1zM30,12h1v1h-1zM32,12h1v1h-1zM34,12h1v1h-1zM35,12h1v1h-1zM36,12h1v1h-1zM39,12h1v1h-1zM40,12h1v1h-1zM2,13h1v1h-1zM3,13h1v1h-1zM4,13h1v1h-1zM6,13h1v1h-1zM9,13h1v1h-1zM11,13h1v1h-1zM14,13h1v1h-1zM15,13h1v1h-1zM16,13h1v1h-1zM17,13h1v1h-1zM18,13h1v1h-1zM19,13h1v1h-1zM21,13h1v1h-1zM22,13h1v1h-1zM24,13h1v1h-1zM25,13h1v1h-1zM26,13h1v1h-1zM31,13h1v1h-1zM36,13h1v1h-1zM37,13h1v1h-1zM38,13h1v1h-1zM39,13h1v1h-1zM41,13h1v1h-1zM42,13h1v1h-1zM2,14h1v1h-1zM3,14h1v1h-1zM4,14h1v1h-1zM5,14h1v1h-1zM6,14h1v1h-1zM8,14h1v1h-1zM9,14h1v1h-1zM11,14h1v1h-1zM15,14h1v1h-1zM16,14h1v1h-1zM18,14h1v1h-1zM20,14h1v1h-1zM22,14h1v1h-1zM23,14h1v1h-1zM25,14h1v1h-1zM28,14h1v1h-1zM30,14h1v1h-1zM33,14h1v1h-1zM34,14h1v1h-1zM36,14h1v1h-1zM37,14h1v1h-1zM39,14h1v1h-1zM40,14h1v1h-1zM41,14h1v1h-1zM42,14h1v1h-1zM3,15h1v1h-1zM4,15h1v1h-1zM10,15h1v1h-1zM11,15h1v1h-1zM15,15h1v1h-1zM19,15h1v1h-1zM20,15h1v1h-1zM21,15h1v1h-1zM26,15h1v1h-1zM28,15h1v1h-1zM30,15h1v1h-1zM32,15h1v1h-1zM33,15h1v1h-1zM34,15h1v1h-1zM36,15h1v1h-1zM37,15h1v1h-1zM38,15h1v1h-1zM42,15h1v1h-1zM2,16h1v1h-1zM4,16h1v1h-1zM7,16h1v1h-1zM8,16h1v1h-1zM10,16h1v1h-1zM13,16h1v1h-1zM15,16h1v1h-1zM17,16h1v1h-1zM18,16h1v1h-1zM19,16h1v1h-1zM20,16h1v1h-1zM23,16h1v1h-1zM27,16h1v1h-1zM28,16h1v1h-1zM30,16h1v1h-1zM32,16h1v1h-1zM33,16h1v1h-1zM35,16h1v1h-1zM37,16h1v1h-1zM38,16h1v1h-1zM40,16h1v1h-1zM42,16h1v1h-1zM5,17h1v1h-1zM6,17h1v1h-1zM10,17h1v1h-1zM12,17h1v1h-1zM15,17h1v1h-1zM16,17h1v1h-1zM17,17h1v1h-1zM21,17h1v1h-1zM26,17h1v1h-1zM29,17h1v1h-1zM32,17h1v1h-1zM33,17h1v1h-1zM36,17h1v1h-1zM37,17h1v1h-1zM39,17h1v1h-1zM40,17h1v1h-1zM42,17h1v1h-1zM2,18h1v1h-1zM3,18h1v1h-1zM4,18h1v1h-1zM6,18h1v1h-1zM8,18h1v1h-1zM12,18h1v1h-1zM17,18h1v1h-1zM18,18h1v1h-1zM21,18h1v1h-1zM22,18h1v1h-1zM24,18h1v1h-1zM25,18h1v1h-1zM26,18h1v1h-1zM27,18h1v1h-1zM33,18h1v1h-1zM34,18h1v1h-1zM38,18h1v1h-1zM2,19h1v1h-1zM3,19h1v1h-1zM7,19h1v1h-1zM10,19h1v1h-1zM11,19h1v1h-1zM12,19h1v1h-1zM20,19h1v1h-1zM21,19h1v1h-1zM27,19h1v1h-1zM29,19h1v1h-1zM30,19h1v1h-1zM31,19h1v1h-1zM32,19h1v1h-1zM33,19h1v1h-1zM36,19h1v1h-1zM38,19h1v1h-1zM6,20h1v1h-1zM7,20h1v1h-1zM8,20h1v1h-1zM11,20h1v1h-1zM12,20h1v1h-1zM14,20h1v1h-1zM21,20h1v1h-1zM22,20h1v1h-1zM23,20h1v1h-1zM24,20h1v1h-1zM25,20h1v1h-1zM29,20h1v1h-1zM31,20h1v1h-1zM32,20h1v1h-1zM33,20h1v1h-1zM35,20h1v1h-1zM37,20h1v1h-1zM38,20h1v1h-1zM40,20h1v1h-1zM42,20h1v1h-1zM2,21h1v1h-1zM3,21h1v1h-1zM6,21h1v1h-1zM10,21h1v1h-1zM11,21h1v1h-1zM13,21h1v1h-1zM14,21h1v1h-1zM16,21h1v1h-1zM18,21h1v1h-1zM19,21h1v1h-1zM20,21h1v1h-1zM24,21h1v1h-1zM25,21h1v1h-1zM26,21h1v1h-1zM28,21h1v1h-1zM33,21h1v1h-1zM34,21h1v1h-1zM35,21h1v1h-1zM38,21h1v1h-1zM40,21h1v1h-1zM41,21h1v1h-1zM2,22h1v1h-1zM3,22h1v1h-1zM5,22h1v1h-1zM6,22h1v1h-1zM8,22h1v1h-1zM10,22h1v1h-1zM14,22h1v1h-1zM15,22h1v1h-1zM16,22h1v1h-1zM17,22h1v1h-1zM23,22h1v1h-1zM24,22h1v1h-1zM26,22h1v1h-1zM27,22h1v1h-1zM28,22h1v1h-1zM30,22h1v1h-1zM32,22h1v1h-1zM33,22h1v1h-1zM36,22h1v1h-1zM40,22h1v1h-1zM42,22h1v1h-1zM3,23h1v1h-1zM4,23h1v1h-1zM5,23h1v1h-1zM9,23h1v1h-1zM11,23h1v1h-1zM17,23h1v1h-1zM18,23h1v1h-1zM20,23h1v1h-1zM21,23h1v1h-1zM25,23h1v1h-1zM27,23h1v1h-1zM28,23h1v1h-1zM29,23h1v1h-1zM30,23h1v1h-1zM31,23h1v1h-1zM33,23h1v1h-1zM34,23h1v1h-1zM37,23h1v1h-1zM38,23h1v1h-1zM39,23h1v1h-1zM42,23h1v1h-1zM3,24h1v1h-1zM6,24h1v1h-1zM8,24h1v1h-1zM19,24h1v1h-1zM20,24h1v1h-1zM23,24h1v1h-1zM25,24h1v1h-1zM26,24h1v1h-1zM29,24h1v1h-1zM30,24h1v1h-1zM31,24h1v1h-1zM32,24h1v1h-1zM34,24h1v1h-1zM35,24h1v1h-1zM36,24h1v1h-1zM37,24h1v1h-1zM38,24h1v1h-1zM2,25h1v1h-1zM4,25h1v1h-1zM5,25h1v1h-1zM6,25h1v1h-1zM7,25h1v1h-1zM12,25h1v1h-1zM13,25h1v1h-1zM14,25h1v1h-1zM15,25h1v1h-1zM16,25h1v1h-1zM18,25h1v1h-1zM19,25h1v1h-1zM20,25h1v1h-1zM22,25h1v1h-1zM24,25h1v1h-1zM25,25h1v1h-1zM26,25h1v1h-1zM28,25h1v1h-1zM29,25h1v1h-1zM31,25h1v1h-1zM32,25h1v1h-1zM36,25h1v1h-1zM38,25h1v1h-1zM42,25h1v1h-1zM2,26h1v1h-1zM3,26h1v1h-1zM4,26h1v1h-1zM5,26h1v1h-1zM8,26h1v1h-1zM9,26h1v1h-1zM10,26h1v1h-1zM13,26h1v1h-1zM14,26h1v1h-1zM15,26h1v1h-1zM21,26h1v1h-1zM22,26h1v1h-1zM29,26h1v1h-1zM30,26h1v1h-1zM31,26h1v1h-1zM34,26h1v1h-1zM36,26h1v1h-1zM37,26h1v1h-1zM39,26h1v1h-1zM41,26h1v1h-1zM4,27h1v1h-1zM6,27h1v1h-1zM14,27h1v1h-1zM17,27h1v1h-1zM19,27h1v1h-1zM20,27h1v1h-1zM23,27h1v1h-1zM27,27h1v1h-1zM28,27h1v1h-1zM29,27h1v1h-1zM34,27h1v1h-1zM35,27h1v1h-1zM36,27h1v1h-1zM37,27h1v1h-1zM38,27h1v1h-1zM39,27h1v1h-1zM40,27h1v1h-1zM42,27h1v1h-1zM4,28h1v1h-1zM5,28h1v1h-1zM6,28h1v1h-1zM8,28h1v1h-1zM10,28h1v1h-1zM11,28h1v1h-1zM12,28h1v1h-1zM16,28h1v1h-1zM19,28h1v1h-1zM21,28h1v1h-1zM22,28h1v1h-1zM26,28h1v1h-1zM27,28h1v1h-1zM29,28h1v1h-1zM30,28h1v1h-1zM32,28h1v1h-1zM33,28h1v1h-1zM34,28h1v1h-1zM35,28h1v1h-1zM36,28h1v1h-1zM38,28h1v1h-1zM42,28h1v1h-1zM3,29h1v1h-1zM4,29h1v1h-1zM6,29h1v1h-1zM7,29h1v1h-1zM11,29h1v1h-1zM18,29h1v1h-1zM20,29h1v1h-1zM24,29h1v1h-1zM26,29h1v1h-1zM28,29h1v1h-1zM30,29h1v1h-1zM35,29h1v1h-1zM36,29h1v1h-1zM38,29h1v1h-1zM39,29h1v1h-1zM40,29h1v1h-1zM41,29h1v1h-1zM8,30h1v1h-1zM10,30h1v1h-1zM11,30h1v1h-1zM16,30h1v1h-1zM17,30h1v1h-1zM18,30h1v1h-1zM20,30h1v1h-1zM24,30h1v1h-1zM25,30h1v1h-1zM26,30h1v1h-1zM29,30h1v1h-1zM30,30h1v1h-1zM33,30h1v1h-1zM34,30h1v1h-1zM37,30h1v1h-1zM38,30h1v1h-1zM39,30h1v1h-1zM40,30h1v1h-1zM42,30h1v1h-1zM2,31h1v1h-1zM3,31h1v1h-1zM4,31h1v1h-1zM5,31h1v1h-1zM7,31h1v1h-1zM9,31h1v1h-1zM11,31h1v1h-1zM12,31h1v1h-1zM14,31h1v1h-1zM15,31h1v1h-1zM16,31h1v1h-1zM17,31h1v1h-1zM18,31h1v1h-1zM20,31h1v1h-1zM23,31h1v1h-1zM24,31h1v1h-1zM25,31h1v1h-1zM28,31h1v1h-1zM30,31h1v1h-1zM32,31h1v1h-1zM33,31h1v1h-1zM35,31h1v1h-1zM38,31h1v1h-1zM40,31h1v1h-1zM42,31h1v1h-1zM2,32h1v1h-1zM3,32h1v1h-1zM4,32h1v1h-1zM6,32h1v1h-1zM7,32h1v1h-1zM8,32h1v1h-1zM9,32h1v1h-1zM12,32h1v1h-1zM13,32h1v1h-1zM15,32h1v1h-1zM17,32h1v1h-1zM19,32h1v1h-1zM20,32h1v1h-1zM21,32h1v1h-1zM23,32h1v1h-1zM24,32h1v1h-1zM26,32h1v1h-1zM27,32h1v1h-1zM28,32h1v1h-1zM29,32h1v1h-1zM31,32h1v1h-1zM32,32h1v1h-1zM33,32h1v1h-1zM34,32h1v1h-1zM36,32h1v1h-1zM37,32h1v1h-1zM38,32h1v1h-1zM40,32h1v1h-1zM42,32h1v1h-1zM2,33h1v1h-1zM3,33h1v1h-1zM5,33h1v1h-1zM9,33h1v1h-1zM10,33h1v1h-1zM12,33h1v1h-1zM13,33h1v1h-1zM16,33h1v1h-1zM20,33h1v1h-1zM21,33h1v1h-1zM22,33h1v1h-1zM24,33h1v1h-1zM25,33h1v1h-1zM27,33h1v1h-1zM32,33h1v1h-1zM33,33h1v1h-1zM35,33h1v1h-1zM38,33h1v1h-1zM39,33h1v1h-1zM40,33h1v1h-1zM2,34h1v1h-1zM3,34h1v1h-1zM4,34h1v1h-1zM6,34h1v1h-1zM8,34h1v1h-1zM13,34h1v1h-1zM14,34h1v1h-1zM18,34h1v1h-1zM19,34h1v1h-1zM21,34h1v1h-1zM25,34h1v1h-1zM26,34h1v1h-1zM29,34h1v1h-1zM30,34h1v1h-1zM31,34h1v1h-1zM33,34h1v1h-1zM34,34h1v1h-1zM35,34h1v1h-1zM36,34h1v1h-1zM37,34h1v1h-1zM38,34h1v1h-1zM39,34h1v1h-1zM40,34h1v1h-1zM41,34h1v1h-1zM42,34h1v1h-1zM10,35h1v1h-1zM11,35h1v1h-1zM16,35h1v1h-1zM20,35h1v1h-1zM21,35h1v1h-1zM23,35h1v1h-1zM24,35h1v1h-1zM25,35h1v1h-1zM28,35h1v1h-1zM29,35h1v1h-1zM31,35h1v1h-1zM32,35h1v1h-1zM34,35h1v1h-1zM38,35h1v1h-1zM41,35h1v1h-1zM2,36h1v1h-1zM3,36h1v1h-1zM4,36h1v1h-1zM5,36h1v1h-1zM6,36h1v1h-1zM7,36h1v1h-1zM8,36h1v1h-1zM10,36h1v1h-1zM11,36h1v1h-1zM13,36h1v1h-1zM19,36h1v1h-1zM20,36h1v1h-1zM24,36h1v1h-1zM25,36h1v1h-1zM26,36h1v1h-1zM28,36h1v1h-1zM29,36h1v1h-1zM30,36h1v1h-1zM33,36h1v1h-1zM34,36h1v1h-1zM36,36h1v1h-1zM38,36h1v1h-1zM39,36h1v1h-1zM40,36h1v1h-1zM2,37h1v1h-1zM8,37h1v1h-1zM10,37h1v1h-1zM13,37h1v1h-1zM16,37h1v1h-1zM19,37h1v1h-1zM22,37h1v1h-1zM23,37h1v1h-1zM24,37h1v1h-1zM25,37h1v1h-1zM26,37h1v1h-1zM28,37h1v1h-1zM30,37h1v1h-1zM32,37h1v1h-1zM33,37h1v1h-1zM34,37h1v1h-1zM38,37h1v1h-1zM41,37h1v1h-1zM2,38h1v1h-1zM4,38h1v1h-1zM5,38h1v1h-1zM6,38h1v1h-1zM8,38h1v1h-1zM10,38h1v1h-1zM11,38h1v1h-1zM14,38h1v1h-1zM15,38h1v1h-1zM17,38h1v1h-1zM18,38h1v1h-1zM19,38h1v1h-1zM20,38h1v1h-1zM21,38h1v1h-1zM23,38h1v1h-1zM25,38h1v1h-1zM26,38h1v1h-1zM27,38h1v1h-1zM28,38h1v1h-1zM29,38h1v1h-1zM30,38h1v1h-1zM31,38h1v1h-1zM33,38h1v1h-1zM34,38h1v1h-1zM35,38h1v1h-1zM36,38h1v1h-1zM37,38h1v1h-1zM38,38h1v1h-1zM39,38h1v1h-1zM41,38h1v1h-1zM42,38h1v1h-1zM2,39h1v1h-1zM4,39h1v1h-1zM5,39h1v1h-1zM6,39h1v1h-1zM8,39h1v1h-1zM10,39h1v1h-1zM11,39h1v1h-1zM13,39h1v1h-1zM14,39h1v1h-1zM17,39h1v1h-1zM19,39h1v1h-1zM23,39h1v1h-1zM25,39h1v1h-1zM27,39h1v1h-1zM29,39h1v1h-1zM30,39h1v1h-1zM32,39h1v1h-1zM34,39h1v1h-1zM35,39h1v1h-1zM39,39h1v1h-1zM40,39h1v1h-1zM41,39h1v1h-1zM2,40h1v1h-1zM4,40h1v1h-1zM5,40h1v1h-1zM6,40h1v1h-1zM8,40h1v1h-1zM13,40h1v1h-1zM16,40h1v1h-1zM20,40h1v1h-1zM21,40h1v1h-1zM23,40h1v1h-1zM26,40h1v1h-1zM27,40h1v1h-1zM29,40h1v1h-1zM30,40h1v1h-1zM35,40h1v1h-1zM36,40h1v1h-1zM38,40h1v1h-1zM39,40h1v1h-1zM42,40h1v1h-1zM2,41h1v1h-1zM8,41h1v1h-1zM11,41h1v1h-1zM12,41h1v1h-1zM19,41h1v1h-1zM22,41h1v1h-1zM29,41h1v1h-1zM35,41h1v1h-1zM37,41h1v1h-1zM38,41h1v1h-1zM39,41h1v1h-1zM40,41h1v1h-1zM42,41h1v1h-1zM2,42h1v1h-1zM3,42h1v1h-1zM4,42h1v1h-1zM5,42h1v1h-1zM6,42h1v1h-1zM7,42h1v1h-1zM8,42h1v1h-1zM10,42h1v1h-1zM12,42h1v1h-1zM13,42h1v1h-1zM19,42h1v1h-1zM21,42h1v1h-1zM24,42h1v1h-1zM25,42h1v1h-1zM26,42h1v1h-1zM27,42h1v1h-1zM28,42h1v1h-1zM32,42h1v1h-1zM33,42h1v1h-1zM34,42h1v1h-1zM35,42h1v1h-1zM36,42h1v1h-1zM38,42h1v1h-1zM39,42h1v1h-1z" fill="#3a1c1e"/></svg></div>
+        <p><b>Ngân hàng:</b> (chưa có)<br><b>Chủ tài khoản:</b> (chưa có)<br><b>Số tài khoản:</b> (chưa có)</p></div>
+    </div>
+  </section>
+
+  <section class="thanks">
+    <p class="eyebrow">Trân trọng cảm ơn</p>
+    <h2 class="script">Rất hân hạnh được đón tiếp!</h2>
+    <p>Vũ Minh Sáng &amp; Nguyễn Thị Nhung</p>
+  </section>
+  <footer>26 · 11 · 2026</footer>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Xem ảnh">
+  <button type="button" class="x" aria-label="Đóng">×</button>
+  <button type="button" class="p" aria-label="Ảnh trước">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button type="button" class="n" aria-label="Ảnh sau">›</button>
+</div>
+
+<script>
+// Countdown to the ceremony: 15:00 on 26 Nov 2026, Vietnam time (UTC+7).
+var target = Date.UTC(2026, 10, 26, 8, 0, 0);
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function tick(){
+  var s = Math.floor((target - Date.now()) / 1000);
+  if (s <= 0){
+    document.getElementById('cd-title').textContent = 'Hôm nay là ngày chung đôi';
+    s = 0;
+  }
+  document.getElementById('cd-d').textContent = Math.floor(s / 86400);
+  document.getElementById('cd-h').textContent = pad(Math.floor(s % 86400 / 3600));
+  document.getElementById('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
+  document.getElementById('cd-s').textContent = pad(s % 60);
+}
+tick(); setInterval(tick, 1000);
+
+// November 2026 starts on a Sunday; week shown Monday-first.
+(function(){
+  var g = document.getElementById('month'), html = '';
+  ['T2','T3','T4','T5','T6','T7','CN'].forEach(function(w){ html += '<span class="w">' + w + '</span>'; });
+  for (var i = 0; i < 6; i++) html += '<span></span>';
+  for (var d = 1; d <= 30; d++) html += '<span class="' + (d === 26 ? 'on' : d === 25 ? 'pre' : '') + '">' + d + '</span>';
+  g.innerHTML = html;
+})();
+
+// Opening screen and background music. Audio may only start from a tap, and the browser may still refuse.
+(function(){
+  var env = document.getElementById('env'), bgm = document.getElementById('bgm'), btn = document.getElementById('music');
+  bgm.volume = 0.6;
+  function setOn(on){ btn.classList.toggle('on', on); btn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+  function play(){ var p; try { p = bgm.play(); } catch (e) { setOn(false); return; }
+    if (p && p.then) p.then(function(){ setOn(true); }).catch(function(){ setOn(false); }); else setOn(true); }
+  document.getElementById('open').addEventListener('click', function(){ env.classList.add('gone'); play(); });
+  btn.addEventListener('click', function(){ if (bgm.paused) play(); else { bgm.pause(); setOn(false); } });
+})();
+
+// RSVP preview: this page has nowhere to send the form yet, so say so plainly.
+document.getElementById('rsvp').addEventListener('submit', function(e){
+  e.preventDefault();
+  var note = document.getElementById('rsvp-note'), name = document.getElementById('rsvp-name').value.trim();
+  note.hidden = false;
+  note.textContent = name
+    ? 'Đây là bản xem thử: thông tin của ' + name + ' chưa được gửi đi. Phần này sẽ hoạt động khi được nối với biểu mẫu thật.'
+    : 'Vui lòng nhập họ và tên. (Đây là bản xem thử, thông tin chưa được gửi đi.)';
+});
+
+// Lightbox
+(function(){
+  var imgs = [].slice.call(document.querySelectorAll('#album img')), lb = document.getElementById('lb'),
+      big = document.getElementById('lb-img'), i = 0, last = null;
+  function show(k){ i = (k + imgs.length) % imgs.length; big.src = imgs[i].src; big.alt = imgs[i].alt; }
+  function open(k){ last = document.activeElement; show(k); lb.classList.add('open'); lb.querySelector('.x').focus(); }
+  function close(){ lb.classList.remove('open'); if (last) last.focus(); }
+  imgs.forEach(function(im, k){ im.parentNode.addEventListener('click', function(){ open(k); }); });
+  lb.querySelector('.x').addEventListener('click', close);
+  lb.querySelector('.p').addEventListener('click', function(){ show(i - 1); });
+  lb.querySelector('.n').addEventListener('click', function(){ show(i + 1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(i - 1); else if (e.key === 'ArrowRight') show(i + 1);
+  });
+})();
+</script>
+</body>
+</html>
