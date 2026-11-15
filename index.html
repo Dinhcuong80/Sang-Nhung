@@ -153,6 +153,14 @@ form.rsvp button{justify-self:center;border:0;cursor:pointer}
 .music:not(.on) .off{display:block;position:absolute;width:28px;height:2px;background:var(--wine);transform:rotate(-45deg)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+.auto{position:fixed;right:14px;bottom:74px;z-index:9;width:50px;height:50px;border-radius:50%;border:1px solid var(--gold);background:var(--paper);color:var(--wine);
+  cursor:pointer;box-shadow:0 6px 18px rgba(110,50,50,.25);display:grid;place-items:center}
+.auto svg{width:20px;height:20px;fill:currentColor}
+.auto .i-play{display:none}
+.auto:not(.on) .i-play{display:block}
+.auto:not(.on) .i-pause{display:none}
+.auto:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
 /* lightbox */
 .lb{position:fixed;inset:0;background:rgba(40,16,18,.92);display:none;align-items:center;justify-content:center;z-index:10;padding:16px}
 .lb.open{display:flex}
@@ -177,6 +185,10 @@ form.rsvp button{justify-self:center;border:0;cursor:pointer}
 <audio id="bgm" src="music.mp3" loop preload="none"></audio>
 <button type="button" class="music" id="music" aria-label="Bật hoặc tắt nhạc nền" aria-pressed="false">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v10.2A3.2 3.2 0 1 0 11 17V8h6V4H9z"/></svg><span class="off"></span>
+</button>
+<button type="button" class="auto" id="auto" aria-label="Bật hoặc dừng tự cuộn thiệp" aria-pressed="false">
+  <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+  <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11.2l-3.6-3.6L7 13l6 6 6-6-1.4-1.4-3.6 3.6V4z"/></svg>
 </button>
 <main class="card">
 
@@ -377,8 +389,39 @@ tick(); setInterval(tick, 1000);
   function setOn(on){ btn.classList.toggle('on', on); btn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
   function play(){ var p; try { p = bgm.play(); } catch (e) { setOn(false); return; }
     if (p && p.then) p.then(function(){ setOn(true); }).catch(function(){ setOn(false); }); else setOn(true); }
-  document.getElementById('open').addEventListener('click', function(){ env.classList.add('gone'); play(); });
+  document.getElementById('open').addEventListener('click', function(){ env.classList.add('gone'); play(); if (window.startAutoScroll) window.startAutoScroll(); });
   btn.addEventListener('click', function(){ if (bgm.paused) play(); else { bgm.pause(); setOn(false); } });
+})();
+
+// Gentle auto-scroll after the card is opened. Touching or scrolling pauses it; it resumes after a few quiet seconds.
+(function(){
+  var btn = document.getElementById('auto'), SPEED = 38, on = false, pos = 0, last = 0, holdUntil = 0, raf = 0;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setOn(v){ on = v; btn.classList.toggle('on', v); btn.setAttribute('aria-pressed', v ? 'true' : 'false');
+    if (v){ pos = window.scrollY; last = 0; if (!raf) raf = requestAnimationFrame(step); } }
+  function busy(){
+    var a = document.activeElement;
+    return document.getElementById('lb').classList.contains('open') || (a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName));
+  }
+  function step(t){
+    raf = 0;
+    if (!on) return;
+    var dt = last ? Math.min(t - last, 100) : 0; last = t;
+    if (t < holdUntil || busy()){ pos = window.scrollY; }
+    else {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      pos = Math.min(pos + SPEED * dt / 1000, max);
+      window.scrollTo({ top: pos, behavior: 'instant' });
+      if (pos >= max - 1){ setOn(false); return; }
+    }
+    raf = requestAnimationFrame(step);
+  }
+  function hold(){ holdUntil = performance.now() + 3500; }
+  ['touchstart','touchmove','wheel','keydown','mousedown'].forEach(function(ev){ window.addEventListener(ev, hold, { passive: true }); });
+  btn.addEventListener('click', function(e){ e.stopPropagation(); setOn(!on); holdUntil = 0; });
+  btn.addEventListener('mousedown', function(e){ e.stopPropagation(); });
+  btn.addEventListener('touchstart', function(e){ e.stopPropagation(); }, { passive: true });
+  window.startAutoScroll = function(){ if (!reduce){ setOn(true); holdUntil = performance.now() + 1500; } };
 })();
 
 // RSVP preview: this page has nowhere to send the form yet, so say so plainly.
