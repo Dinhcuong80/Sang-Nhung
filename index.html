@@ -316,7 +316,7 @@ form.rsvp button:disabled{opacity:.6;cursor:default}
     <p class="eyebrow">Xác nhận tham dự</p>
     <h2 class="script">Bạn sẽ đến chứ?</h2>
     <p>Xin vui lòng dành một phút xác nhận để gia đình đón tiếp chu đáo.</p>
-    <form class="rsvp" id="rsvp" novalidate style="margin-top:18px">
+    <form class="rsvp" id="rsvp" novalidate onsubmit="return false" style="margin-top:18px">
       <div><label for="rsvp-name">Họ và tên</label><input type="text" id="rsvp-name" name="name" autocomplete="name" maxlength="80" placeholder="Ví dụ: Nguyễn Văn An"></div>
       <fieldset><legend>Bạn là khách của</legend>
         <div class="choice">
