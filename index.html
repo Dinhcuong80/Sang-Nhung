@@ -124,6 +124,10 @@ form.rsvp button{justify-self:center;border:0;cursor:pointer}
 .rsvp-frame{margin-top:18px;background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(176,138,74,.5)}
 .rsvp-frame[hidden]{display:none}
 .rsvp-frame iframe{display:block;width:100%;height:1050px;border:0}
+.rsvp-done{background:#fff8f5;border-radius:12px;padding:28px 20px;margin-top:18px}
+.rsvp-done[hidden],form.rsvp[hidden],#rsvp-count-row[hidden]{display:none}
+.rsvp-done p{margin:10px 0 0}
+form.rsvp button:disabled{opacity:.6;cursor:default}
 /* gift */
 .gifts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .gift{background:#fff8f5;border-radius:12px;padding:16px 12px}
@@ -312,8 +316,28 @@ form.rsvp button{justify-self:center;border:0;cursor:pointer}
     <p class="eyebrow">Xác nhận tham dự</p>
     <h2 class="script">Bạn sẽ đến chứ?</h2>
     <p>Xin vui lòng dành một phút xác nhận để gia đình đón tiếp chu đáo.</p>
-    <p style="margin-top:18px"><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd-WaiRI6UvAaOwn_1qAK1LaRa5026qygnoU4eGefC6rgitHQ/viewform">Mở biểu mẫu xác nhận</a></p>
-    <div class="rsvp-frame" id="rsvp-frame" hidden></div>
+    <form class="rsvp" id="rsvp" novalidate style="margin-top:18px">
+      <div><label for="rsvp-name">Họ và tên</label><input type="text" id="rsvp-name" name="name" autocomplete="name" maxlength="80" placeholder="Ví dụ: Nguyễn Văn An"></div>
+      <fieldset><legend>Bạn là khách của</legend>
+        <div class="choice">
+          <label for="rsvp-side-trai"><input type="radio" id="rsvp-side-trai" name="side" value="Nhà trai" checked> Nhà trai</label>
+          <label for="rsvp-side-gai"><input type="radio" id="rsvp-side-gai" name="side" value="Nhà gái"> Nhà gái</label>
+        </div></fieldset>
+      <fieldset><legend>Bạn có tham dự không?</legend>
+        <div class="choice">
+          <label for="rsvp-yes"><input type="radio" id="rsvp-yes" name="attend" value="Có, tôi sẽ đến" checked> Có, tôi sẽ đến</label>
+          <label for="rsvp-no"><input type="radio" id="rsvp-no" name="attend" value="Rất tiếc, tôi bận"> Rất tiếc, tôi bận</label>
+        </div></fieldset>
+      <div id="rsvp-count-row"><label for="rsvp-count">Số người tham dự</label>
+        <select id="rsvp-count" name="count"><option>1</option><option>2</option><option>3</option><option>4</option><option>5 trở lên</option></select></div>
+      <div><label for="rsvp-wish">Lời chúc gửi cô dâu chú rể</label><textarea id="rsvp-wish" name="wish" maxlength="600" placeholder="Chúc hai bạn trăm năm hạnh phúc..."></textarea></div>
+      <button type="submit" class="btn" id="rsvp-send">Gửi xác nhận</button>
+      <p class="form-note" id="rsvp-note" role="status" hidden></p>
+    </form>
+    <div class="rsvp-done" id="rsvp-done" hidden>
+      <div class="script" style="font-size:44px">Cảm ơn bạn!</div>
+      <p id="rsvp-done-text"></p>
+    </div>
   </section>
 
   <section>
@@ -411,12 +435,39 @@ tick(); setInterval(tick, 1000);
   window.startAutoScroll = function(){ if (!reduce){ setOn(true); holdUntil = performance.now() + 1500; } };
 })();
 
-// RSVP: the form lives on Google Forms. Where the host allows frames (GitHub Pages), show it inline too.
+// RSVP: the card's own form posts to a Google Form. The reply is opaque, so a sent request is treated as delivered.
 (function(){
-  if (!/github\.io$/.test(location.hostname)) return;
-  var box = document.getElementById('rsvp-frame'), f = document.createElement('iframe');
-  f.src = 'https://docs.google.com/forms/d/e/1FAIpQLSd-WaiRI6UvAaOwn_1qAK1LaRa5026qygnoU4eGefC6rgitHQ/viewform?embedded=true'; f.title = 'Biểu mẫu xác nhận tham dự'; f.loading = 'lazy';
-  box.appendChild(f); box.hidden = false;
+  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSd-WaiRI6UvAaOwn_1qAK1LaRa5026qygnoU4eGefC6rgitHQ', form = document.getElementById('rsvp'), note = document.getElementById('rsvp-note'),
+      btn = document.getElementById('rsvp-send'), countRow = document.getElementById('rsvp-count-row');
+  function val(name){ var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
+  function say(msg, html){ note.hidden = false; if (html) note.innerHTML = msg; else note.textContent = msg; }
+  form.addEventListener('change', function(){ countRow.hidden = document.getElementById('rsvp-no').checked; });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('rsvp-name').value.trim(), coming = document.getElementById('rsvp-yes').checked;
+    if (!name){ say('Vui lòng nhập họ và tên.'); document.getElementById('rsvp-name').focus(); return; }
+    var data = new URLSearchParams();
+    data.append('entry.480100146', name);
+    data.append('entry.1323081856', val('side'));
+    data.append('entry.935167889', val('attend'));
+    if (coming) data.append('entry.59824374', document.getElementById('rsvp-count').value);
+    var wish = document.getElementById('rsvp-wish').value.trim();
+    if (wish) data.append('entry.1309640100', wish);
+    btn.disabled = true; btn.textContent = 'Đang gửi...'; note.hidden = true;
+    var sent;
+    try { sent = fetch(FORM + '/formResponse', { method: 'POST', mode: 'no-cors', body: data }); }
+    catch (err) { sent = Promise.reject(err); }
+    sent.then(function(){
+      form.hidden = true;
+      document.getElementById('rsvp-done-text').textContent = coming
+        ? 'Gia đình đã nhận được xác nhận của ' + name + '. Rất mong được đón tiếp bạn!'
+        : 'Gia đình đã nhận được hồi âm của ' + name + '. Cảm ơn bạn đã gửi lời.';
+      document.getElementById('rsvp-done').hidden = false;
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = 'Gửi xác nhận';
+      say('Chưa gửi được từ trang này. Bạn kiểm tra kết nối mạng rồi thử lại, hoặc <a href="' + FORM + '/viewform">mở biểu mẫu xác nhận</a>.', true);
+    });
+  });
 })();
 
 // Lightbox
